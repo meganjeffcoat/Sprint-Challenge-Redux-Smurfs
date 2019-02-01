@@ -2,11 +2,10 @@
   Be sure to import in all of the action types from `../actions`
 */
 import {
-  START_FETCH,
   FETCH_SUCCESS,
   FETCH_FAILED,
-  //ADD_SMURF,
-  //GET_SMURF
+  ADD_SMURF,
+  GET_SMURFS
 } from '../actions';
 
 /*
@@ -30,9 +29,9 @@ const initialState = {
   error: null
 }
 
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
   switch(action.type){
-    case START_FETCH:
+    case GET_SMURFS:
       return {
         ...state,
         fetchingSmurfs: true
@@ -49,6 +48,12 @@ const reducer = (state, action) => {
         ...state,
         fetchingSmurfs: false,
         error: action.payload
+      }
+    case ADD_SMURF:
+      return{
+        ...state,
+        smurfs: action.payload,
+        addingSmurf: true
       }
   
     
