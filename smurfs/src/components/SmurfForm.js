@@ -66,7 +66,7 @@ class SmurfForm extends Component {
                     value={this.state.newSmurf.height}
                     onChange={this.handleChange}
                 />
-                <input type='submit' value='Add Smurf' />
+                <input background-color='white' type='submit' value='Add Smurf' />
             </form>
         )
     }
