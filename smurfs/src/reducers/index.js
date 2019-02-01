@@ -2,11 +2,11 @@
   Be sure to import in all of the action types from `../actions`
 */
 import {
-  START_REQUEST,
-  REQUEST_SUCCESS,
-  REQUEST_FAILED,
-  ADD_SMURF,
-  GET_SMURF
+  START_FETCH,
+  FETCH_SUCCESS,
+  FETCH_FAILED,
+  //ADD_SMURF,
+  //GET_SMURF
 } from '../actions';
 
 /*
@@ -23,15 +23,33 @@ import {
 
 const initialState = {
   smurfs: [],
-  fetchingSmurfs: false
-  addingSmurf: false
-  updatingSmurf: false
-  deletingSmurf: false
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
   error: null
 }
 
-const reducer = (stat, action) => {
+const reducer = (state, action) => {
   switch(action.type){
+    case START_FETCH:
+      return {
+        ...state,
+        fetchingSmurfs: true
+      }
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurf: false,
+        smurfs: actions.payload,
+        error: null
+      }
+    case FETCH_FAILED:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: action.payload
+      }
   
     
   default:
@@ -39,7 +57,7 @@ const reducer = (stat, action) => {
   }
 }
 
-export default reducer:
+export default reducer;
 
 /*
   You'll only need one smurf reducer for this project.

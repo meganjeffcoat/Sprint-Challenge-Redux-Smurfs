@@ -3,9 +3,9 @@ import axios from 'axios';
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-export const START_REQUEST = 'START_REQUEST';
-export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
-export const REQUEST_FAIL = 'REQUEST_FAIL';
+export const START_FETCH = 'START_FETCH';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const FETCH_FAILED = 'FETCH_FAILED';
 export const ADD_SMURF = 'ADD_SMURF';
 export const GET_SMURF = 'GET_SMURF';
 
@@ -19,3 +19,21 @@ export const GET_SMURF = 'GET_SMURF';
    U - updateSmurf
    D - deleteSmurf
 */
+
+export const startRequest = () => dispatch => {
+  dispatch({ type: START_FETCH });
+  axios 
+    .get('http://localhost:3333/smurfs')
+    .then(res => {
+      dispatch({
+        type: REQUEST_SUCCESS,
+        payload: res
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: REQUEST_FAIL,
+        payload: err
+      })
+    })
+}
