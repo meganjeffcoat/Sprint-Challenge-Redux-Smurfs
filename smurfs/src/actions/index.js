@@ -26,13 +26,13 @@ export const startRequest = () => dispatch => {
     .get('http://localhost:3333/smurfs')
     .then(res => {
       dispatch({
-        type: REQUEST_SUCCESS,
+        type: FETCH_SUCCESS,
         payload: res
       })
     })
     .catch(err => {
       dispatch({
-        type: REQUEST_FAIL,
+        type: FETCH_FAILED,
         payload: err
       })
     })

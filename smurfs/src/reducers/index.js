@@ -41,7 +41,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         fetchingSmurf: false,
-        smurfs: actions.payload,
+        smurfs: action.payload,
         error: null
       }
     case FETCH_FAILED:
