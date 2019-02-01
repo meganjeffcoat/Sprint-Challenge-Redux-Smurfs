@@ -20,7 +20,7 @@ export const GET_SMURF = 'GET_SMURF';
    D - deleteSmurf
 */
 
-export const startRequest = () => dispatch => {
+export const getSmurfs = () => dispatch => {
   dispatch({ type: START_FETCH });
   axios 
     .get('http://localhost:3333/smurfs')
